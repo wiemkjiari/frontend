@@ -18,7 +18,10 @@ import { ClientControllerService } from '../../../services/services';
 import {Save6$Params} from '../../../services/fn/client-controller/save-6';
 import { ClientDto } from '../../../services/models';
 import { AdresseDto } from '../../../services/models';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
 @Component({
     selector: 'app-e-create-order',
     standalone: true,
@@ -33,7 +36,13 @@ export class CreerclientComponent {
   adresseDto: AdresseDto = {};
   errorMsg: Array<string> = [];
   file: File | null = null;
+<<<<<<< HEAD
   clientDto: ClientDto = {};
+=======
+  clientDto: ClientDto = {
+     // Assurez-vous que AdresseDto est importé correctement et que le chemin est correct
+};
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
     // isToggled
     isToggled = false;
 
@@ -70,7 +79,11 @@ export class CreerclientComponent {
       this.clientcontroller.save6(saveParams)
         .subscribe(
           (client: ClientDto) => {
+<<<<<<< HEAD
             this.router.navigate(['ecommerce-page/costumers']);          
+=======
+            this.router.navigate(['ecommerce-page/clients']);          
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
           },
           (error) => {
             console.error('Erreur lors de l\'enregistrement du client :', error);
@@ -78,6 +91,7 @@ export class CreerclientComponent {
           }
         );
       }
+<<<<<<< HEAD
       onFileSelected(event: any): void {
         const file = event.target.files[0];
         if (file) {
@@ -114,6 +128,8 @@ export class CreerclientComponent {
         });
     }
     
+=======
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
   /*  savePhoto(idObject?: number, titre?: string): void {
       if (idObject && titre && this.file) {
         const params: SavePhotoParams = {
@@ -132,7 +148,11 @@ export class CreerclientComponent {
     }
     */
     cancelClick(): void {
+<<<<<<< HEAD
         this.router.navigate(['ecommerce-page/costumers']);
+=======
+        this.router.navigate(['ecommerce-page/clients']);
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
      
     }
 }

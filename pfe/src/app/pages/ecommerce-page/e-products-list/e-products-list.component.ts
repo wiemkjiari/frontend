@@ -10,13 +10,20 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { CustomizerSettingsService } from '../../../customizer-settings/customizer-settings.service';
+<<<<<<< HEAD
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+=======
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
 
 @Component({
     selector: 'app-e-products-list',
     standalone: true,
+<<<<<<< HEAD
     imports: [ FontAwesomeModule,MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatCheckboxModule, MatTooltipModule],
+=======
+    imports: [MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatCheckboxModule, MatTooltipModule],
+>>>>>>> 4ffd8b841a4886bc77d1d90d3f4028a82594965e
     templateUrl: './e-products-list.component.html',
     styleUrl: './e-products-list.component.scss'
 })
