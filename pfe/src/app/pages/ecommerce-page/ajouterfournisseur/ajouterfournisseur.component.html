@@ -21,7 +21,7 @@
                                     Name
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="entrer nom" [(ngModel)]="clientDto.nom" name="nom">
+                                    <input matInput placeholder="entrer nom" [(ngModel)]="fournisseurDto.nom" name="nom">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                     prenon
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="entrer prenom" [(ngModel)]="clientDto.prenom" name="prenon">
+                                    <input matInput placeholder="entrer prenom" [(ngModel)]="fournisseurDto.prenom" name="prenon">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                     mail
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="exemple@gmail.com" [(ngModel)]="clientDto.mail" name="mail">
+                                    <input matInput placeholder="exemple@gmail.com" [(ngModel)]="fournisseurDto.mail" name="mail">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -82,7 +82,7 @@
                                     photo
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="enter photo"  [(ngModel)]="clientDto.photo" name="photo">
+                                    <input matInput placeholder="enter photo"  [(ngModel)]="fournisseurDto.photo" name="photo">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -92,7 +92,7 @@
                                    entreprise
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="entreprise"  [(ngModel)]="clientDto.idEntreprise" name="identreprose">
+                                    <input matInput placeholder="entreprise"  [(ngModel)]="fournisseurDto.idEntreprise" name="identreprose">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -102,7 +102,7 @@
                                     Phone Number
                                 </label>
                                 <mat-form-field>
-                                    <input matInput placeholder="numTel" [(ngModel)]="clientDto.numTel" name="numTel">
+                                    <input matInput placeholder="numTel" [(ngModel)]="fournisseurDto.numTel" name="numTel">
                                 </mat-form-field>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                         </div>
                     
                     <div class="btn-box">
-                        <button mat-button type="submit" (click)="saveclient()">
+                        <button mat-button type="submit" (click)="savefournisseur()">
                             ajouterclient
                         </button>
                         <button mat-button  (click)="cancelClick()">

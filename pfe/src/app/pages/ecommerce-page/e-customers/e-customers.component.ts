@@ -14,55 +14,46 @@ import { ClientControllerService } from '../../../services/services';
 import { HttpClient ,HttpClientModule} from '@angular/common/http';
 import { Router,ActivatedRoute } from '@angular/router';
 import { ClientDto } from '../../../services/models';
+import { CommonModule } from '@angular/common';
+import { AdresseDto } from '../../../services/models';
+import { Injectable } from '@angular/core';
+
+@Injectable({
+    providedIn: 'root'
+  })
 @Component({
     selector: 'app-e-customers',
     standalone: true,
-    imports: [HttpClientModule,MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatCheckboxModule, MatTooltipModule],
+    imports: [CommonModule,HttpClientModule,MatCardModule, MatMenuModule, MatButtonModule, RouterLink, MatTableModule, MatPaginatorModule, NgIf, MatCheckboxModule, MatTooltipModule],
     templateUrl: './e-customers.component.html',
     styleUrl: './e-customers.component.scss'
 })
 export class ECustomersComponent  implements OnInit{
-    clients: ClientDto[] = [];    displayedColumns: string[] = ['select', 'orderId', 'customer', 'email', 'phone', 'lastLogin', 'totalSpend', 'totalOrders', 'status', 'action'];
-    dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+    listClients: ClientDto[] = [];    displayedColumns: string[] = ['select', 'orderId', 'customer', 'email', 'phone', 'lastLogin', 'totalSpend', 'totalOrders', 'status', 'action'];
     selection = new SelectionModel<PeriodicElement>(true, []);
-    dataSourse = new MatTableDataSource<ClientDto>(this.clients);
-
+   // dataSourse = new MatTableDataSource<ClientDto>(this.clients);
+   adresseDto: AdresseDto = {};
     errorMsg = '';
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     ngAfterViewInit() {
-        this.dataSource.paginator = this.paginator;
+      //  this.dataSourse.paginator = this.paginator;
     }
 
     /** Whether the number of selected elements matches the total number of rows. */
-    isAllSelected() {
-        const numSelected = this.selection.selected.length;
-        const numRows = this.dataSource.data.length;
-        return numSelected === numRows;
-    }
+   
 
     /** Selects all rows if they are not all selected; otherwise clear selection. */
-    toggleAllRows() {
-        if (this.isAllSelected()) {
-            this.selection.clear();
-            return;
-        }
-        this.selection.select(...this.dataSource.data);
-    }
+ 
 
     /** The label for the checkbox on the passed row */
-    checkboxLabel(row?: PeriodicElement): string {
-        if (!row) {
-            return `${this.isAllSelected() ? 'deselect' : 'select'} all`;
-        }
-        return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.customer + 1}`;
-    }
+  
 
     // Search Filter
     applyFilter(event: Event) {
         const filterValue = (event.target as HTMLInputElement).value;
-        this.dataSource.filter = filterValue.trim().toLowerCase();
+       // this.dataSourse.filter = filterValue.trim().toLowerCase();
     }
 
     // isToggled
@@ -80,7 +71,6 @@ export class ECustomersComponent  implements OnInit{
         });
     }
     ngOnInit() {
-        this.dataSource.paginator = this.paginator;
         this.loadClients();
     }
 
@@ -88,15 +78,28 @@ export class ECustomersComponent  implements OnInit{
     toggleRTLEnabledTheme() {
         this.themeService.toggleRTLEnabledTheme();
     }
-    
     loadClients(): void {
-        this.clientService.findAll6().subscribe((res: any) => {
-            console.log(res.clients);
-            this.clients = res.clients;
-            this.dataSourse.data = this.clients;
+        this.clientService.findAll6().subscribe({
+            next: (clients: ClientDto[]) => {
+                this.listClients = clients;
+                this.listClients.forEach(client => {
+             
+                    if (!client.adresse) {
+                        client.adresse = {}; 
+                    }
+                });
+            },
+            error: (error) => {
+                console.error('Erreur lors du chargement des clients', error);
+                this.errorMsg = "Une erreur est survenue lors du chargement des clients.";
+            }
         });
+    
     }
-}
+
+} 
+  
+
 
 
 const ELEMENT_DATA: PeriodicElement[] = [

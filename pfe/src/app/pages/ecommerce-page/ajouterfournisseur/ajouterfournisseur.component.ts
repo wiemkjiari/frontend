@@ -2,38 +2,34 @@ import { Component } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatNativeDateModule } from '@angular/material/core';
-import { MatDatepickerModule } from '@angular/material/datepicker';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterLink } from '@angular/router';
-import { FileUploadModule } from '@iplab/ngx-file-upload';
 import { CustomizerSettingsService } from '../../../customizer-settings/customizer-settings.service';
 import { HttpClient ,HttpClientModule} from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Router,ActivatedRoute } from '@angular/router';
-import { ClientControllerService } from '../../../services/services';
-import {Save6$Params} from '../../../services/fn/client-controller/save-6';
-import { ClientDto } from '../../../services/models';
+import { FournisseurControllerService } from '../../../services/services';
+import { FournisseurDto } from '../../../services/models';
 import { AdresseDto } from '../../../services/models';
-
+import { Save2$Params } from '../../../services/fn/fournisseur-controller/save-2';
 @Component({
-    selector: 'app-e-create-order',
-    standalone: true,
-    imports: [HttpClientModule,MatCardModule, MatMenuModule, MatButtonModule, RouterLink, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,    ],
-  templateUrl: './creerclient.component.html',
-  styleUrl: './creerclient.component.scss'
+  selector: 'app-ajouterfournisseur',
+  standalone: true,
+  imports: [HttpClientModule,MatCardModule, MatMenuModule, MatButtonModule, RouterLink, FormsModule, MatFormFieldModule, MatInputModule, MatSelectModule,    ],
+  templateUrl: './ajouterfournisseur.component.html',
+  styleUrl: './ajouterfournisseur.component.scss'
 })
-export class CreerclientComponent {
-  
-  
-  clients : ClientDto = {};
+export class AjouterfournisseurComponent {
+
+  fournisseur : FournisseurDto = {};
   adresseDto: AdresseDto = {};
   errorMsg: Array<string> = [];
   file: File | null = null;
-  clientDto: ClientDto = {};
+  fournisseurDto: FournisseurDto = {};
     // isToggled
     isToggled = false;
 
@@ -41,7 +37,7 @@ export class CreerclientComponent {
       private router: Router,
       private activatedRoute: ActivatedRoute,
       private http: HttpClient,
-      private clientcontroller : ClientControllerService,
+      private fournisseurcontroller : FournisseurControllerService,
         public themeService: CustomizerSettingsService
     ) {
         this.themeService.isToggled$.subscribe(isToggled => {
@@ -60,20 +56,20 @@ export class CreerclientComponent {
         this.themeService.toggleRTLEnabledTheme();
     }
 
-    saveclient(): void {
-      this.clientDto.adresse = this.adresseDto; 
+    savefournisseur(): void {
+      this.fournisseurDto.adresse = this.adresseDto; 
   
-      const saveParams: Save6$Params = {
-        body: this.clientDto 
+      const saveParams: Save2$Params = {
+        body: this.fournisseurDto 
       };
   
-      this.clientcontroller.save6(saveParams)
+      this.fournisseurcontroller.save2(saveParams)
         .subscribe(
-          (client: ClientDto) => {
-            this.router.navigate(['ecommerce-page/costumers']);          
+          (fournisseur: FournisseurDto) => {
+            this.router.navigate(['ecommerce-page/fournisseur']);          
           },
           (error) => {
-            console.error('Erreur lors de l\'enregistrement du client :', error);
+            console.error('Erreur lors de l\'enregistrement du fournisseurr :', error);
             this.errorMsg = error.error.errors; 
           }
         );
@@ -87,7 +83,7 @@ export class CreerclientComponent {
                 // Ici vous avez deux options, en fonction de ce que votre backend attend :
     
                 // Option 1: Base64 - utile pour les petites images ou si vous n'avez pas de backend pour stocker les fichiers
-                this.clientDto.photo = e.target.result; // Stocke l'image en base64
+                this.fournisseurDto.photo = e.target.result; // Stocke l'image en base64
     
                 // Option 2: Upload and get URL - nécessite un endpoint backend pour traiter le chargement du fichier
                 // this.uploadImageAndGetURL(file);
@@ -95,7 +91,7 @@ export class CreerclientComponent {
             reader.readAsDataURL(file); // Convertit l'image en base64
         }
     }
-    
+   /* 
     // Exemple de méthode pour charger une image et récupérer une URL (à adapter selon votre API)
     uploadImageAndGetURL(file: File): void {
         const formData = new FormData();
@@ -113,7 +109,7 @@ export class CreerclientComponent {
 
         });
     }
-    
+    */
   /*  savePhoto(idObject?: number, titre?: string): void {
       if (idObject && titre && this.file) {
         const params: SavePhotoParams = {
@@ -132,7 +128,7 @@ export class CreerclientComponent {
     }
     */
     cancelClick(): void {
-        this.router.navigate(['ecommerce-page/costumers']);
+        this.router.navigate(['ecommerce-page/fournisseur']);
      
     }
 }

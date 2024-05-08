@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { EcommerceComponent } from './dashboard/ecommerce/ecommerce.component';
-
+import { AjouterfournisseurComponent } from './pages/ecommerce-page/ajouterfournisseur/ajouterfournisseur.component';
 import { NotFoundComponent } from './common/not-found/not-found.component';
 import { EcommercePageComponent } from './pages/ecommerce-page/ecommerce-page.component';
 import { EProductsGridComponent } from './pages/ecommerce-page/e-products-grid/e-products-grid.component';
@@ -47,7 +47,7 @@ import { LCourseDetailsComponent } from './pages/lms-page/l-course-details/l-cou
 import { LCreateCourseComponent } from './pages/lms-page/l-create-course/l-create-course.component';
 import { LEditCourseComponent } from './pages/lms-page/l-edit-course/l-edit-course.component';
 import { LInstructorsComponent } from './pages/lms-page/l-instructors/l-instructors.component';
-
+import { FournisseurComponent } from './pages/ecommerce-page/fournisseur/fournisseur.component';
 import { EOrderTrackingComponent } from './pages/ecommerce-page/e-order-tracking/e-order-tracking.component';
 import { CalendarComponent } from './apps/calendar/calendar.component';
 import { ContactsComponent } from './apps/contacts/contacts.component';
@@ -208,6 +208,9 @@ export const routes: Routes = [
             {path: 'create-order', component: ECreateOrderComponent},
             {path: 'order-tracking', component: EOrderTrackingComponent},
             {path: 'costumers', component: ECustomersComponent},
+            {path: 'fournisseur', component: FournisseurComponent},
+            {path: 'ajouterfournisseur', component: AjouterfournisseurComponent},
+
             {path: 'customer-details', component: ECustomerDetailsComponent},
             {path: 'cart', component: ECartComponent},
             {path: 'sellers', component: ESellersComponent},
