@@ -1,0 +1,315 @@
+<!-- Breadcrumb -->
+<div class="breadcrumb-card mb-25 d-md-flex align-items-center justify-content-between">
+    <h5 class="mb-0">
+        ajouter commande 
+    </h5>
+    <ol class="breadcrumb list-unstyled mt-0 mb-0 pl-0">
+        <li class="breadcrumb-item position-relative">
+            <a routerLink="/" class="d-inline-block position-relative">
+                <i class="ri-home-8-line"></i>
+                tableau de bord
+            </a>
+        </li>
+        <li class="breadcrumb-item position-relative">
+            Commerce
+        </li>
+        <li class="breadcrumb-item position-relative">
+            commande
+        </li>
+        <li class="breadcrumb-item position-relative">
+            ajouter commande
+        </li>
+    </ol>
+</div>
+
+<!-- Create Order -->
+<form>
+    <div class="row">
+        <div class="col-lg-8">
+            <mat-card
+                class="daxa-card create-order-card mb-25 border-radius bg-white border-none d-block"
+                [class.rtl-enabled]="themeService.isRTLEnabled()"
+            >
+                <mat-card-header>
+                    <mat-card-title>
+                        <h5 class="mt-0 mb-0">
+                            Information
+                        </h5>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                   Nom  Client
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        entrer nom client
+                                    </mat-label>
+                                    <input matInput placeholder="nom et prenom">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Code Commande
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        enter code
+                                    </mat-label>
+                                    <input matInput placeholder="code Commande">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Date Commande
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        entrer date commande
+                                    </mat-label>
+                                    <input matInput placeholder="jj/mm/aa">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Etat Commande
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        enter Etat Commade
+                                    </mat-label>
+                                    <mat-select>
+                                        <mat-option value="option1">
+                                            en preparation
+                                        </mat-option>
+                                        <mat-option value="option2">
+                                            validé
+                                        </mat-option>
+                                        <mat-option value="option3">
+                                            livreé
+                                        </mat-option>
+                                    
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                      
+                       
+                        <div class="col-sm-6">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                   IDclient
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        enter IDclient
+                                    </mat-label>
+                                    <input matInput placeholder="E.g. 123 Main Street, Anytown, USA">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                       
+                    
+                    </div>
+                    <div class="btn-box">
+                        <button mat-button>
+                            Create Order
+                        </button>
+                        <button mat-button>
+                            Cancel
+                        </button>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-lg-4">
+            <mat-card
+                class="daxa-card create-order-card mb-25 border-radius bg-white border-none d-block"
+                [class.component-dark-theme]="themeService.isDark()"
+                [class.rtl-enabled]="themeService.isRTLEnabled()"
+            >
+                <mat-card-header>
+                    <mat-card-title>
+                        <h5 class="mt-0 mb-0">
+                            Your Order
+                        </h5>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="your-order-info d-flex align-items-center justify-content-between">
+                        <span class="d-block">
+                            Ordered items
+                        </span>
+                        <a mat-button routerLink="/ecommerce-page/cart">
+                            Edit Cart
+                        </a>
+                    </div>
+                    <div class="your-order-table">
+                        <div class="table-responsive">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th scope="col" class="fw-medium text-black">
+                                            Description
+                                        </th>
+                                        <th scope="col" class="fw-medium text-black">
+                                            Price
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="text-body">
+                                            Grand Total :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-body">
+                                            Discount :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-body">
+                                            Tax :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-black">
+                                            Subtotal :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-body">
+                                            Shipping Charge :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-body">
+                                            Coupon Charge :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-black">
+                                            Total :
+                                        </td>
+                                        <td class="text-body">
+                                            $0.00
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="daxa-card create-order-card mb-25 border-radius bg-white border-none d-block">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h5 class="mt-0 mb-0">
+                            Payment Method
+                        </h5>
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Payment Card
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        Your card
+                                    </mat-label>
+                                    <mat-select>
+                                        <mat-option value="option1">
+                                            PayPal
+                                        </mat-option>
+                                        <mat-option value="option2">
+                                            Stax
+                                        </mat-option>
+                                        <mat-option value="option3">
+                                            Helcim
+                                        </mat-option>
+                                        <mat-option value="option4">
+                                            Square
+                                        </mat-option>
+                                        <mat-option value="option5">
+                                            Stripe
+                                        </mat-option>
+                                      </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Card Number
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        Your card number
+                                    </mat-label>
+                                    <input matInput placeholder="E.g. 3588XXXXXXXXX">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Expiration Date
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        Expiration date
+                                    </mat-label>
+                                    <input matInput placeholder="E.g. MM / YY">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="mb-25">
+                                <label class="main-label d-block lh-1 text-black">
+                                    Security Code
+                                </label>
+                                <mat-form-field>
+                                    <mat-label>
+                                        Security code
+                                    </mat-label>
+                                    <input matInput placeholder="E.g. CVV">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</form>
